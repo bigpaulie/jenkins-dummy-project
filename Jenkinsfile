@@ -33,7 +33,6 @@ pipeline {
                             target: [
                                 reportName: 'CoverageReports',
                                 reportDir: 'reports/clover',
-                                reportFiles: 'index.html',
                                 keepAll: true
                             ]
                         )
