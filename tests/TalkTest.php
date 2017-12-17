@@ -30,4 +30,9 @@ class TalkTest extends TestCase
     {
         $this->assertEquals("Hola !", $this->talk->talkSpanish());
     }
+
+    public function testTalkItalian()
+    {
+        $this->assertEquals("Ciao !", $this->talk->talkItalian());
+    }
 }
