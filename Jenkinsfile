@@ -23,6 +23,7 @@ pipeline {
                             target: [
                                 reportName: 'CoverageReports',
                                 reportDir: 'reports/coverage',
+                                reportFiles: 'index.html',
                                 keepAll: true
                             ]
                         )
@@ -35,6 +36,7 @@ pipeline {
     post {
         always {
             junit 'reports/junit/*.xml'
+            deleteDir()
         }
     }
 }

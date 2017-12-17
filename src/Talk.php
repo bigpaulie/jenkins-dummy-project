@@ -16,4 +16,14 @@ class Talk
     {
         return "Hello {$name}";
     }
+
+    /**
+     * this method will not be tested.
+     *
+     * @return string
+     */
+    public function talkFrench()
+    {
+        return "Bonjour !";
+    }
 }
