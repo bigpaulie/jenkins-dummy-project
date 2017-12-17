@@ -10,6 +10,7 @@ pipeline {
 
         stage('test') {
             steps {
+                sh 'mkdir -p reports/coverage'
                 sh 'php ./vendor/bin/phpunit -c phpunit.xml --log-junit reports/junit/junit.xml\
                  --coverage-clover reports/clover/clover.xml --whitelist src/'
             }
