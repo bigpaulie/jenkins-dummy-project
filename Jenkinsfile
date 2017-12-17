@@ -11,28 +11,19 @@ pipeline {
         stage('test') {
             steps {
                 sh 'php ./vendor/bin/phpunit -c phpunit.xml --log-junit reports/junit/junit.xml\
-                 --coverage-clover reports/clover/clover.xml --whitelist src/'
+                 --coverage-html reports/coverage --whitelist src/'
             }
         }
 
         stage('publish reports') {
             steps {
                 parallel (
-                    clover : {
-                        step(
-                            [
-                                $class: 'CloverPublisher',
-                                cloverReportDir: 'reports/clover',
-                                cloverReportFileName: 'clover.xml',
-                                healthyTarget: [methodCoverage: 70, conditionalCoverage: 80, statementCoverage: 80],
-                                unhealthyTarget: [methodCoverage: 50, conditionalCoverage: 60, statementCoverage: 60],
-                                failingTarget: [methodCoverage: 30, conditionalCoverage: 40, statementCoverage: 40]
-                            ]
-                        )
+                    coverage : {
                         publishHTML(
                             target: [
                                 reportName: 'CoverageReports',
-                                reportDir: 'reports/clover',
+                                reportDir: 'reports/coverage',
+                                reportFiles: 'index.html',
                                 keepAll: true
                             ]
                         )
