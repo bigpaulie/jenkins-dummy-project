@@ -25,4 +25,9 @@ class TalkTest extends TestCase
         $name = "Paul";
         $this->assertEquals(sprintf("Hello %s", $name), $this->talk->sayHello($name));
     }
+
+    public function testTalkSpanishShouldPass()
+    {
+        $this->assertEquals("Hola !", $this->talk->talkSpanish());
+    }
 }

@@ -26,4 +26,9 @@ class Talk
     {
         return "Bonjour !";
     }
+
+    public function talkSpanish()
+    {
+        return "Hola !";
+    }
 }
