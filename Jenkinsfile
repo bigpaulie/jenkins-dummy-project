@@ -32,7 +32,7 @@ pipeline {
                         publishHTML(
                             target: [
                                 reportName: 'Coverage Reports',
-                                reportDir: 'reports/coverage',
+                                reportDir: 'reports/clover',
                                 reportFiles: 'index.html',
                                 keepAll: true
                             ]
