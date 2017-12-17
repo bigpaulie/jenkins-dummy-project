@@ -23,7 +23,6 @@ pipeline {
                             target: [
                                 reportName: 'CoverageReports',
                                 reportDir: 'reports/coverage',
-                                reportFiles: 'index.html',
                                 keepAll: true
                             ]
                         )
