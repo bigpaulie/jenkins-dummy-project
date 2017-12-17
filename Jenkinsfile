@@ -11,24 +11,42 @@ pipeline {
         stage('test') {
             steps {
                 sh 'php ./vendor/bin/phpunit -c phpunit.xml --log-junit reports/junit/junit.xml\
-                 --coverage-clover reports/clover/clover.xml'
+                 --coverage-clover reports/clover/clover.xml --whitelist src/'
             }
         }
 
-        step([
-            $class: 'CloverPublisher',
-            cloverReportDir: 'reports/clover',
-            cloverReportFileName: 'clover.xml',
-            healthyTarget: [methodCoverage: 70, conditionalCoverage: 80, statementCoverage: 80], // optional, default is: method=70, conditional=80, statement=80
-            unhealthyTarget: [methodCoverage: 50, conditionalCoverage: 50, statementCoverage: 50], // optional, default is none
-            failingTarget: [methodCoverage: 0, conditionalCoverage: 0, statementCoverage: 0]     // optional, default is none
-          ])
+        stage('publish reports') {
+            steps {
+                parallel (
+                    clover : {
+                        step(
+                            [
+                                $class: 'CloverPublisher',
+                                cloverReportDir: 'reports/clover',
+                                cloverReportFileName: 'clover.xml',
+                                healthyTarget: [methodCoverage: 70, conditionalCoverage: 80, statementCoverage: 80],
+                                unhealthyTarget: [methodCoverage: 50, conditionalCoverage: 60, statementCoverage: 60],
+                                failingTarget: [methodCoverage: 30, conditionalCoverage: 40, statementCoverage: 40]
+                            ]
+                        )
+                        publishHTML(
+                            target: [
+                                reportName: 'Coverage Reports',
+                                reportDir: 'reports/coverage',
+                                reportFiles: 'index.html',
+                                alwaysLinkToLastBuild: true,
+                                keepAll: true
+                            ]
+                        )
+                    }
+                )
+            }
+        }
     }
 
     post {
         always {
             junit 'reports/junit/*.xml'
-            clover 'reports/clover/*.xml'
             deleteDir()
         }
     }
