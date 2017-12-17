@@ -31,7 +31,7 @@ pipeline {
                         )
                         publishHTML(
                             target: [
-                                reportName: 'Coverage Reports',
+                                reportName: 'CoverageReports',
                                 reportDir: 'reports/clover',
                                 reportFiles: 'index.html',
                                 keepAll: true
@@ -46,7 +46,6 @@ pipeline {
     post {
         always {
             junit 'reports/junit/*.xml'
-            deleteDir()
         }
     }
 }
