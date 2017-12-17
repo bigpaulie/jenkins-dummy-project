@@ -34,7 +34,6 @@ pipeline {
                                 reportName: 'Coverage Reports',
                                 reportDir: 'reports/coverage',
                                 reportFiles: 'index.html',
-                                alwaysLinkToLastBuild: true,
                                 keepAll: true
                             ]
                         )
