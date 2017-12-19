@@ -14,7 +14,7 @@ pipeline {
                     phpcs: {
                         sh 'mkdir -p reports/checkstyle'
                         sh 'php ./vendor/bin/phpcs --report=checkstyle --report-file=reports/checkstyle/checkstyle.xml\
-                         -v src/'
+                         --runtime-set ignore_errors_on_exit 1 --runtime-set ignore_warnings_on_exit 1 src/'
                     }
                 )
             }
