@@ -26,17 +26,22 @@ class TalkTest extends TestCase
         $this->assertEquals(sprintf("Hello %s", $name), $this->talk->sayHello($name));
     }
 
+    public function testTalkFrenchShouldPass()
+    {
+        $this->assertEquals("Bonjour !", $this->talk->talkFrench());
+    }
+
     public function testTalkSpanishShouldPass()
     {
         $this->assertEquals("Hola !", $this->talk->talkSpanish());
     }
 
-    public function testTalkItalian()
+    public function testTalkItalianShouldPass()
     {
         $this->assertEquals("Ciao !", $this->talk->talkItalian());
     }
 
-    public function testTalkRomanian()
+    public function testTalkRomanianShouldPass()
     {
         $this->assertEquals("Salut !", $this->talk->talkRomanian());
     }
