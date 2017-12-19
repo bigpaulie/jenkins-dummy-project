@@ -15,6 +15,10 @@ pipeline {
                         sh 'mkdir -p reports/checkstyle'
                         sh 'php ./vendor/bin/phpcs --report=checkstyle --report-file=reports/checkstyle/checkstyle.xml\
                          --runtime-set ignore_errors_on_exit 1 --runtime-set ignore_warnings_on_exit 1 src/'
+                    },
+                    phpcpd: {
+                        sh 'mkdir -p reports/cpd'
+                        sh 'php ./vendor/bin/phpcpd --log-pmd=reports/cpd/pmd-cpd.xml'
                     }
                 )
             }
@@ -53,6 +57,19 @@ pipeline {
                                 unstableTotalAll: '999',
                                 alwaysLinkToLastBuild: true,
                                 usePreviousBuildAsReference: false
+                            ]
+                        )
+                    },
+                    phpcpd: {
+                        step(
+                            [
+                                $class: 'DryPublisher',
+                                canComputeNew: false,
+                                defaultEncoding: '',
+                                pattern: 'reports/cpd/pmd-cpd.xml',
+                                alwaysLinkToLastBuild: true,
+                                healthy: '',
+                                unHealthy: ''
                             ]
                         )
                     }
