@@ -2,14 +2,18 @@
 
 namespace bigpaulie\jenkins;
 
-
+/**
+ * Class Talk
+ * @package bigpaulie\jenkins
+ */
 class Talk
 {
 
     /**
      * Say hello.
      *
-     * @param string $name
+     * @param  string $name
+     *
      * @return string
      */
     public function sayHello($name)
