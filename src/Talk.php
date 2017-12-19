@@ -18,7 +18,7 @@ class Talk
     }
 
     /**
-     * this method will not be tested.
+     * Talk French
      *
      * @return string
      */
@@ -27,8 +27,33 @@ class Talk
         return "Bonjour !";
     }
 
+    /**
+     * Talk Spanish.
+     *
+     * @return string
+     */
     public function talkSpanish()
     {
         return "Hola !";
+    }
+
+    /**
+     * Talk Italian.
+     *
+     * @return string
+     */
+    public function talkItalian()
+    {
+        return "Ciao !";
+    }
+
+    /**
+     * Talk Romanian.
+     *
+     * @return string
+     */
+    public function talkRomanian()
+    {
+        return "Salut !";
     }
 }
