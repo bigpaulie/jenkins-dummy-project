@@ -14,7 +14,7 @@ pipeline {
                     phpcs: {
                         sh 'mkdir -p reports/checkstyle'
                         sh 'php ./vendor/bin/phpcs --report=checkstyle --report-file=reports/checkstyle/checkstyle.xml\
-                         src/'
+                         -v src/'
                     }
                 )
             }
