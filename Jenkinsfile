@@ -18,7 +18,7 @@ pipeline {
                     },
                     phpcpd: {
                         sh 'mkdir -p reports/cpd'
-                        sh 'php ./vendor/bin/phpcpd --log-pmd=reports/cpd/pmd-cpd.xml'
+                        sh 'php ./vendor/bin/phpcpd --log-pmd=reports/cpd/pmd-cpd.xml src/'
                     }
                 )
             }
