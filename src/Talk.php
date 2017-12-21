@@ -24,11 +24,12 @@ class Talk
     /**
      * Talk French
      *
+     * @param string $name
      * @return string
      */
-    public function talkFrench()
+    public function talkFrench($name)
     {
-        return "Bonjour !";
+        return "Bonjour {$name}!";
     }
 
     /**
@@ -56,8 +57,8 @@ class Talk
      *
      * @return string
      */
-    public function talkRomanian()
+    public function talkRomanian($name)
     {
-        return "Salut !";
+        return "Salut {$name}!";
     }
 }
