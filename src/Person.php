@@ -59,6 +59,8 @@ class Person
                     return $this->talk->sayHello($name);
                 case Person::LANGUAGE_FRENCH:
                     return $this->talk->talkFrench($name);
+                case Person::LANGUAGE_ROMANIAN:
+                    return $this->talk->talkRomanian($name);
                 default:
                     return $this->talk->sayHello($name);
             }
