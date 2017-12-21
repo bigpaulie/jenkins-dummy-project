@@ -1,5 +1,5 @@
 pipeline {
-    agent any
+    agent 'php70'
     stages {
 
         stage('build') {
