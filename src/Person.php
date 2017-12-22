@@ -24,6 +24,13 @@ class Person
     const LANGUAGE_ENGLISH = 'english';
 
     /**
+     * Person speaks Romanian.
+     *
+     * @var string
+     */
+    const LANGUAGE_ROMANIAN = 'romanian';
+
+    /**
      * Person speaks Italian.
      *
      * @var string
@@ -44,10 +51,26 @@ class Person
         $this->talk = $talk;
     }
 
+    /**
+     * Greet other persons.
+     *
+     * @param string $name
+     * @param string $language
+     * @return null|string
+     */
     public function greet($name, $language = self::LANGUAGE_ENGLISH)
     {
         if ( $this->talk ) {
-            return $this->talk->sayHello($name);
+            switch ($language) {
+                case Person::LANGUAGE_ENGLISH;
+                    return $this->talk->sayHello($name);
+                case Person::LANGUAGE_FRENCH:
+                    return $this->talk->talkFrench($name);
+                case Person::LANGUAGE_ROMANIAN:
+                    return $this->talk->talkRomanian($name);
+                default:
+                    return $this->talk->sayHello($name);
+            }
         }
 
         return null;

@@ -38,6 +38,50 @@ class PersonTest extends TestCase
     }
 
     /**
+     * this test should fail.
+     * Person should not be able to greet.
+     */
+    public function testGreetShouldFail()
+    {
+        $person = new Person();
+        $this->assertNull($person->greet('Paul'));
+    }
+
+    /**
+     * This test should pass
+     * this person speaks French.
+     */
+    public function testGreetInFrenchShouldPass()
+    {
+        $this->talk = Mock::mock(Talk::class);
+        $this->talk->shouldReceive('talkFrench')->withArgs(['Paul'])
+            ->andReturn('Bonjour Paul!');
+        $person = new Person($this->talk);
+
+        $this->assertEquals(
+            'Bonjour Paul!',
+            $person->greet('Paul', Person::LANGUAGE_FRENCH)
+        );
+    }
+
+    /**
+     * this test should pass.
+     * this person speaks Romanian.
+     */
+    public function testGreetInRomanianShouldPass()
+    {
+        $this->talk = Mock::mock(Talk::class);
+        $this->talk->shouldReceive('talkRomanian')->withArgs(['Paul'])
+            ->andReturn('Salut Paul!');
+        $person = new Person($this->talk);
+
+        $this->assertEquals(
+            'Salut Paul!',
+            $person->greet('Paul', Person::LANGUAGE_ROMANIAN)
+        );
+    }
+
+    /**
      * Tear down the test.
      *
      * @return void
