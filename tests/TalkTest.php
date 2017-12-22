@@ -28,7 +28,7 @@ class TalkTest extends TestCase
 
     public function testTalkFrenchShouldPass()
     {
-        $this->assertEquals("Bonjour !", $this->talk->talkFrench());
+        $this->assertEquals("Bonjour Paul!", $this->talk->talkFrench('Paul'));
     }
 
     public function testTalkSpanishShouldPass()
@@ -43,6 +43,6 @@ class TalkTest extends TestCase
 
     public function testTalkRomanianShouldPass()
     {
-        $this->assertEquals("Salut !", $this->talk->talkRomanian());
+        $this->assertEquals("Salut Paul!", $this->talk->talkRomanian('Paul'));
     }
 }

@@ -1,5 +1,5 @@
 pipeline {
-    agent { label 'php70' }
+    agent any
     stages {
 
         stage('build') {
