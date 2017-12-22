@@ -31,6 +31,20 @@ class Person
     const LANGUAGE_ROMANIAN = 'romanian';
 
     /**
+     * Person speaks Italian.
+     *
+     * @var string
+     */
+    const LANGUAGE_ITALIAN = 'italian';
+
+    /**
+     * Person speaks German.
+     *
+     * @var string
+     */
+    const LANGUAGE_GERMAN = 'german';
+
+    /**
      * @var Talk $talk
      */
     private $talk;
